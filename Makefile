@@ -1,6 +1,8 @@
-.PHONY: build run exec all
+.PHONY: build run exec push dev all
 
 all: build run
+
+dev: build exec
 
 build:
 	docker rmi jnovack/self-signed-san || true
@@ -11,3 +13,6 @@ run:
 
 exec:
 	docker run -it --rm --entrypoint=/bin/sh jnovack/self-signed-san
+
+push: build
+	docker push jnovack/self-signed-san
