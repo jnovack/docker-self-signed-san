@@ -1,11 +1,13 @@
-.PHONY: build run exec push dev all
+.PHONY: clean build run exec push dev all
 
 all: build run
 
 dev: build exec
 
-build:
+clean:
 	docker rmi jnovack/self-signed-san || true
+
+build:
 	docker build -t jnovack/self-signed-san .
 
 run:
