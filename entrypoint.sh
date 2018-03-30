@@ -25,7 +25,7 @@ done
 
 openssl genrsa -out key.pem 4096
 openssl req -new -key key.pem -out request.csr -config /openssl.cnf
-openssl x509 -req -in request.csr -signkey key.pem -out certificate.pem  -extensions v3_req -extfile /openssl.cnf
+openssl x509 -req -in request.csr -signkey key.pem -days ${DAYS:=7200} -out certificate.pem  -extensions v3_req -extfile /openssl.cnf
 
 echo
 
